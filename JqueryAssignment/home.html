@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Jquery Working</title>
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/16.7.3/jcanvas.js"> </script>
+    <script type="text/javascript">
+    // var canvas = document.getElementById('mycanvas');
+    // var context = canvas.getContext('2d');
+         $(document).ready(function(){
+      $("#create").click(function(){
+          //$("#mycanvas").height($("#height").val());
+            $("#mycanvas").attr('height',$("#height").val())
+              $("#mycanvas").attr('width',$("#width").val())
+          console.log($("#height").val());
+          //  $("#mycanvas").width($("#width").val());
+            $("#hide").show();
+            $("#divshow").css("display","inline");
+     });
+     $("#hide").click(function(){
+
+        $("#mycanvas").fadeOut(3000);
+        $("#divshow").css("display","none");
+    });
+    $('#bgcolor').change(
+    function() {
+        var val1 = $(this).find("option:selected").val();
+        console.log(val1);
+          $("#mycanvas").css("background-color",val1);
+    });
+    $("#showcircle").click(function(){
+      $('#slider').slideDown();
+     });
+   $("#rect").click(function(){
+     console.log($('#rx').val());
+            $("#mycanvas")[0].getContext("2d").fillRect($('#rx').val(),$('#ry').val(),$('#rlength').val(),$('#rbreath').val());
+  });
+
+   $("#showline").click(function(){
+     $('#slider2').slideDown();
+  });
+  $("#line").click(function(){
+    var canvas = $('#mycanvas')[0];
+     var context = canvas.getContext('2d');
+
+     context.beginPath();
+     context.moveTo($('#lx').val(), $('#ly').val());
+     context.lineTo($('#lx1').val(), $('#ly1').val());
+     context.stroke();
+
+ });
+
+    });
+    </script>
+  </head>
+  <body>
+    <div class="">
+
+    </div>
+    <div style="margin:20px">
+    Width:<input type="text" id="width" value="300"></input>
+    Height:<input type="text" id="height" value="300"></input>
+    <button id="create" >Canvas</button>
+    <button id="hide"hidden="true" >Hide Canvas</button>
+
+  </div>
+  <div>
+  <canvas id="mycanvas" height="0px" width="0px" style="border:1px solid #000000;background-color:white;" ></canvas>
+
+<div style="width:40%; border-style; solid; display:none; float:right;" id="divshow">
+   <h3>Features </h3>
+   <select placeholder="Set Background Color" id="bgcolor">
+  <option value="bg">Select BackGround Color</option>
+  <option value="yellow">Yellow</option>
+  <option value="black">Black</option>
+  <option value="white">White</option>
+  <option value="blue">Blue</option>
+</select>
+<select placeholder="Set Foreground Color" id="fgcolor">
+<option value="bg">Select Foreground Color</option>
+<option value="yellow">Yellow</option>
+<option value="black">Black</option>
+<option value="white">White</option>
+<option value="blue">Blue</option>
+</select>
+<button type="button" name="button" id="showcircle">Draw Rect</button>
+<button type="button" name="button" id="showline">Draw Line</button>
+<div id="slider" style="display:none; margin:5px;">
+    <input type="text" id="rx" placeholder="x margin" style="width: 60px"></input>
+    <input type="text" id="ry" placeholder="y margin" style="width: 60px"></input>
+    <input type="text" id="rlength" placeholder="length" style="width: 60px"></input>
+    <input type="text" id="rbreath" placeholder="breadth" style="width: 60px"></input>
+    <button type="button" name="button" style="width:60px" id="rect">Rect</button>
+</div>
+<div id="slider2" style="display:none; margin:5px;">
+    <input type="text" id="lx" placeholder="line x1" style="width: 60px"></input>
+    <input type="text" id="ly" placeholder="line y1" style="width: 60px"></input>
+    <input type="text" id="lx1" placeholder="line x2" style="width: 60px"></input>
+    <input type="text" id="ly1" placeholder="line y2" style="width: 60px"></input>
+    <button type="button" name="button" style="width:60px" id="line">Line</button>
+</div>
+
+</div>
+
+</div>
+  </body>
+</html>
